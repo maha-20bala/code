@@ -1,0 +1,16 @@
+.home {
+  padding: 30px;
+  text-align: center;
+}
+
+.home h1 {
+  font-size: 2rem;
+ height :50px;
+ 
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 25px;
+}

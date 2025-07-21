@@ -1,61 +1,29 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ProductProvider } from './ProductContext';
+import { CartProvider } from './CartContext';
+import Header from './Header';
+import Footer from './Footer';
+import Home from './Home';
+import ProductDetail from './ProductDetail';
+import Cart from './Cart';
 import './App.css';
-import { FaWind } from "react-icons/fa";
-import { BsCloudSun } from "react-icons/bs";
-import { FaSoundcloud } from "react-icons/fa";
 
-import { WiHumidity } from "react-icons/wi";
-import { WiDayWindy } from "react-icons/wi";
-
-import { FaTemperatureThreeQuarters } from "react-icons/fa6";
 
 function App() {
-  const [data, setData] = useState(null);
-  const [inputValue, setInputValue] = useState('');
-
-  async function handleClick() {
-    try {
-      const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&appid=543892824a091a3efd2e39b4136b024c&units=metric`
-      );
-      setData(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   return (
-    <div className="weather-app">
-      <h2>Weather App</h2>
-      <input
-        type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        placeholder="Enter city name"
-      />
-      <button onClick={handleClick}>Find</button>
-
-      {data && (
-        <div className="weather-info">
-         
-          <p>{new Date().toLocaleDateString()}</p>
-          <ul>
-            <li><FaTemperatureThreeQuarters/><strong>Temperature:</strong> {data.main?.temp} °C</li>
-            <li><WiHumidity />
-             <strong>Humidity:</strong> {data.main?.humidity} %</li>
-            <li><WiDayWindy /><strong>Wind Speed:</strong> {data.wind?.speed} km/h</li>
-            <li><FaWind />
-<strong>Wind Direction:</strong> {data.wind?.deg}°</li>
-            <li><BsCloudSun />
-<strong>Cloud Cover:</strong> {data.clouds?.all} %</li>
-            
-            <li><FaSoundcloud />
-<strong>Condition:</strong> {data.weather?.[0]?.description}</li>
-          </ul>
-        </div>
-      )}
-    </div>
+    <ProductProvider>
+      <CartProvider>
+        <Router>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </CartProvider>
+    </ProductProvider>
   );
 }
 

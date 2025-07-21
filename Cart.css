@@ -1,0 +1,27 @@
+.cart {
+  padding: 20px;
+}
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  margin-bottom: 16px;
+}
+.cart-item img {
+  width: 80px;
+}
+.cart-item button {
+  background-color: crimson;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.cart-item button:hover {
+  background-color: darkred;
+}

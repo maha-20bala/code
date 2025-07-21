@@ -1,0 +1,34 @@
+.product-detail {
+  background-color: white;
+  padding: 30px;
+  margin: 30px auto;
+  max-width: 700px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.product-detail img {
+  width: 60%;
+  max-width: 350px;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.product-detail h2 {
+  font-size: 1.5rem;
+  margin: 20px 0 10px;
+}
+
+.product-detail p {
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+
+.product-detail{
+  color:rgb(16, 16, 83);
+  font-size: 1.2rem;
+}
+.button{ background-color:yellow;
+color:gold}
